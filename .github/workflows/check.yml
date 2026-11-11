@@ -11,3 +11,4 @@ jobs:
       - run: pip install tiktoken
       - run: python3 tools/count.py --check
       - run: python3 tools/count.py
+      - run: python3 tools/track.py files .

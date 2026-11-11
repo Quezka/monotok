@@ -11,6 +11,8 @@ import pathlib
 import re
 import sys
 
+# tiktoken @ local lib if no system install
+sys.path.insert(0, str(pathlib.Path.home() / ".local/share/monotok/pylib"))
 import tiktoken
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent

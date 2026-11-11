@@ -66,6 +66,32 @@ python3 tools/count.py           # savings on examples/
 CI runs both on every push. To add a glyph, add a line to the
 `monotok-alphabet` block in `AGENTS.md` and run `--check`.
 
+## Track
+
+`tools/track.py` measures what Monotok saves in real Claude Code sessions.
+
+```
+python3 tools/track.py              # by mode, then by day
+python3 tools/track.py --days 7 --by session
+python3 tools/track.py files ~/Documents/Repos/quire   # comments + agent docs in a repo
+```
+
+- Reads transcripts from `~/.claude/projects/**/*.jsonl` and keeps one line per reply in
+  `~/.local/share/monotok/history.jsonl`, so history survives Claude Code's 30-day cleanup.
+  A `SessionEnd` hook running `track.py update` keeps it current.
+- `out` and `think` are exact, from the API usage of each reply. `text` is the visible
+  reply, counted with `o200k_base` (Claude's tokenizer is not public).
+- Each reply is classified as `monotok`, `prose`, `wenyan` or `short`. Monotok replies
+  are mostly alphabet glyphs (>= 50%) and have almost no articles or pronouns (< 5%).
+- `saved~` is an estimate: Monotok text tokens x `ratio / (1 - ratio)`, with `ratio`
+  (default 0.48) taken from the `examples/` totals. Change it with `--ratio`.
+- `files` counts comment lines in code and agent-only docs, and estimates what
+  rewriting the prose ones would save on every agent read.
+- Thinking tokens are not controlled by `AGENTS.md`; they are shown separately.
+
+Needs `tiktoken` (`pip3 install --target ~/.local/share/monotok/pylib tiktoken` works
+without root; the script looks there).
+
 ## License
 
 MIT
