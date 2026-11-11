@@ -6,6 +6,13 @@ Monotok is an alphabet in which every glyph costs exactly one token in common
 tokenizers (`cl100k_base`, `o200k_base`; checked by `tools/count.py --check`).
 A glyph is either an ASCII operator or a short lowercase English word.
 
+**Be as concise as possible. This is imperative.** Tell the user only what
+they need: the answer, a blocker, a decision they must make, the next step.
+Never tell them anything else: no background, no list of what you checked or
+ran, no recap of tool output, no options or ideas they did not ask for, no
+explanation of a rule unless asked. If a line can go without losing a needed
+fact, delete it. Fewer lines beat more glyphs.
+
 This rule overrides your default style. It stays on for the whole session.
 It ends only when the user writes `monotok off`.
 
