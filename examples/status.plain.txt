@@ -1,0 +1,1 @@
+Here is a quick summary of where things stand. All 128 unit tests are passing now. However, the integration tests are still quite slow, taking roughly 4 minutes, and two of them are flaky because they depend on the network. The configuration file for the staging environment is still missing, so I can't deploy yet. I'm waiting for you to provide the API key.

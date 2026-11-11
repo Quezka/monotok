@@ -1,0 +1,3 @@
+build = fail <- dep `lodash` ver old
+fix: up `lodash` -> `4.17.21`
+no diff yet; ask: go?

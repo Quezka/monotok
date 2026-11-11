@@ -1,0 +1,1 @@
+Sure! I took a look at the failing login test. The problem is in the token expiry check in auth.ts on line 42: it uses a strict less-than comparison (<) when it should use less-than-or-equal (<=), so tokens that expire exactly at the current second are rejected. I've changed the comparison to <=. Next, you can run npm test to confirm that everything passes.

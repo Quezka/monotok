@@ -1,0 +1,3 @@
+test login = fail <- `auth.ts`@`42` use `<` | need `<=`
+fix: `<` -> `<=`
+next: run `npm test`

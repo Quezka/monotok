@@ -1,0 +1,4 @@
+test unit: `128` pass
+test integration = slow ~ `4 min`; `2` fail some <- need network
+cfg staging = none => no deploy
+wait: user -> api key

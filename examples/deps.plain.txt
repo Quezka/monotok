@@ -1,0 +1,1 @@
+I checked your dependencies. The build is failing because the version of the lodash package you have installed is older than the one required by your other dependencies. I would recommend upgrading lodash to version 4.17.21, which should resolve the conflict. I haven't made any changes yet, so let me know if you would like me to go ahead and do it.
