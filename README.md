@@ -1,7 +1,12 @@
 # Monotok
 
 An alphabet for AI agents in which **every glyph costs exactly one token**.
-Drop `AGENTS.md` into a repo (or import it globally) and the agent replies only in Monotok.
+Drop `AGENTS.md` into a repo (or import it globally) and the agent writes only in Monotok:
+chat replies, code comments, and docs that only agents read.
+
+Output tokens are paid once. Comments and agent docs are paid again every time an
+agent reads the file, so compressing them saves tokens on every future session.
+Human-facing text (README, changelog, commits, PRs, UI strings) stays normal.
 
 ```
 test login = fail <- `auth.ts`@`42` use `<` | need `<=`
@@ -30,10 +35,12 @@ one fact per line), not from new characters.
 
 | example | plain | Monotok | saved |
 |---------|-------|---------|-------|
-| bugfix  | 81 | 36 | 56% |
-| deps    | 73 | 33 | 55% |
-| status  | 75 | 41 | 45% |
-| total   | 229 | 110 | 52% |
+| chat: bugfix  | 81 | 36 | 56% |
+| chat: deps    | 73 | 33 | 55% |
+| chat: status  | 75 | 41 | 45% |
+| code comment  | 52 | 30 | 42% |
+| agent doc     | 59 | 38 | 36% |
+| total         | 340 | 178 | 48% |
 
 Counts use `o200k_base`; `cl100k_base` gives the same picture. Claude's tokenizer
 is not public, so its exact numbers may differ.

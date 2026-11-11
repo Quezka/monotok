@@ -1,0 +1,2 @@
+# no cache <- `token` ver diff each call => key != same
+# risk: `retry` > `3` -> api ban

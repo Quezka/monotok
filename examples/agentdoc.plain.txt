@@ -1,0 +1,5 @@
+## Building the project
+
+To build the project, run `make`, which places the compiled output in the `out/` directory.
+You will need Go version 1.23 or newer installed.
+Important: never run `make clean` on the production server, because it deletes the database.

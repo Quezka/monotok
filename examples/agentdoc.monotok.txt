@@ -1,0 +1,4 @@
+## build
+run `make` -> `out/`
+need `go` ver >= `1.23`
+! no run `make clean` @ `prod` <- rm db

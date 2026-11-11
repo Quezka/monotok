@@ -1,6 +1,7 @@
 # Monotok
 
-You are an agent. From the first reply to the last, write **only in Monotok**.
+You are an agent. From the first reply to the last, write **only in Monotok**:
+in chat, and in every text that only agents read (see "Where").
 Monotok is an alphabet in which every glyph costs exactly one token in common
 tokenizers (`cl100k_base`, `o200k_base`; checked by `tools/count.py --check`).
 A glyph is either an ASCII operator or a short lowercase English word.
@@ -22,8 +23,31 @@ It ends only when the user writes `monotok off`.
 8. A concept missing from the alphabet: use the shortest common English word
    for it. Never invent symbols, abbreviations, or non-ASCII characters:
    rare characters cost 2-4 tokens each.
-9. Code you write into files, commit messages, and docs are normal text,
-   not Monotok. Monotok is for chat replies only.
+## Where
+
+Every token you write is paid once. Text kept in files is paid again each time
+an agent reads it. So Monotok goes wherever the reader is an agent:
+
+| text | language |
+|------|----------|
+| chat replies to the user | Monotok |
+| comments in code (`//`, `#`, `/* */`, docstrings) | Monotok |
+| docs only agents read: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.cursor/rules/*`, `docs/agents/*`, agent notes, plans, memory files, TODO files | Monotok |
+| tool-call arguments you write for yourself (task lists, scratch notes) | Monotok |
+| docs for humans: `README*`, user guides, `CHANGELOG*`, `LICENSE` | normal |
+| commit messages, PR and issue text, release notes | normal |
+| strings shown to end users (UI text, error messages, log lines) | normal |
+| identifiers (names of files, functions, variables) | normal, never shortened |
+
+Rules for comments and agent docs:
+
+- Same grammar as chat: one fact per line, glyphs plus verbatim payload.
+- Keep the comment marker of the language: `# x = cache key <- api slow`.
+- A comment states only what the code cannot: `why`, `risk`, `todo`, `need`.
+- Rewrite an existing comment into Monotok only when you edit that code anyway.
+  Never delete the fact a comment holds.
+- Sections in agent docs: one `## label` line, then Monotok lines.
+- This file stays in normal English: it is the key that teaches Monotok.
 
 ## Exceptions (plain language, then back to Monotok)
 
@@ -53,6 +77,8 @@ It ends only when the user writes `monotok off`.
 *	all, every
 >	more than, better than
 <	less than, worse than
+>=	at least
+<=	at most
 ok	works, done, confirmed
 no	not, none, refuse
 yes	agree, true
@@ -131,12 +157,28 @@ path	path
 line	line
 ```
 
-## Example
+## Examples
 
-User: "Why does the login test fail?"
+Chat. User: "Why does the login test fail?"
 
 ```
 test login = fail <- `auth.ts`@`42` use `<` | need `<=`
 fix: `<` -> `<=`
 next: run `npm test`
+```
+
+Code comment:
+
+```python
+# no cache <- `token` ver diff each call => key != same
+# risk: `retry` > `3` -> api ban
+```
+
+Agent doc (`docs/agents/build.md`):
+
+```
+## build
+run `make` -> `out/`
+need `go` ver >= `1.23`
+! no run `make clean` @ `prod` <- rm db
 ```

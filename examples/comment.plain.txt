@@ -1,0 +1,3 @@
+# We deliberately do not cache this response, because the token changes its
+# version on every call, which means the cache key would never be the same.
+# Be careful: if the retry count goes above 3, the API may ban the client.
