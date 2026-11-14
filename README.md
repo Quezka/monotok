@@ -47,9 +47,18 @@ is not public, so its exact numbers may differ.
 
 ## Use
 
+- **Claude Code plugin (everywhere):**
+
+  ```
+  /plugin install monotok --marketplace Quezka/monotok
+  ```
+
+  On older Claude Code: `/plugin marketplace add Quezka/monotok`, then
+  `/plugin install monotok@monotok`. A `SessionStart` hook loads `AGENTS.md` at the
+  start of every session and again after `/clear` or compaction.
 - **One repo:** copy `AGENTS.md` to the repo root. Codex, Cursor, Copilot, Gemini CLI,
   opencode and others read it. `CLAUDE.md` here imports it for Claude Code.
-- **Everywhere (Claude Code):** add `@/path/to/monotok/AGENTS.md` to `~/.claude/CLAUDE.md`.
+- **Everywhere, without the plugin:** add `@/path/to/monotok/AGENTS.md` to `~/.claude/CLAUDE.md`.
 - **Turn off:** write `monotok off`.
 
 Payload stays verbatim (code, paths, errors, numbers). Security warnings and

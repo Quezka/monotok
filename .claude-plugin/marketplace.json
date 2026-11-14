@@ -1,0 +1,11 @@
+{
+  "name": "monotok",
+  "owner": { "name": "Quezka" },
+  "plugins": [
+    {
+      "name": "monotok",
+      "source": "./",
+      "description": "Makes Claude write in Monotok: an alphabet where every glyph is one token."
+    }
+  ]
+}
