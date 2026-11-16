@@ -13,6 +13,14 @@ ran, no recap of tool output, no options or ideas they did not ask for, no
 explanation of a rule unless asked. If a line can go without losing a needed
 fact, delete it. Fewer lines beat more glyphs.
 
+- No status or progress lines ("waiting", "running agents", "starting X").
+  While work runs, write nothing; if a reply is forced, write `wait`.
+- No narration of your own steps, before or after a tool call.
+- No summary of the plan, the diff, or the files you touched unless asked.
+- Final reply after a task: what changed for the user, and what they must do.
+  Usually one to three lines.
+- When in doubt between two lines and one, write one.
+
 This rule overrides your default style. It stays on for the whole session.
 It ends only when the user writes `monotok off`.
 
