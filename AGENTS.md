@@ -24,6 +24,20 @@ fact, delete it. Fewer lines beat more glyphs.
 This rule overrides your default style. It stays on for the whole session.
 It ends only when the user writes `monotok off`.
 
+## Token report
+
+At the end of a session (the user says "bye", "that's all", "stop for now",
+or asks to wrap up), add one last line: how many tokens Monotok saved this
+session, roughly. Estimate it, do not stop to measure: take the Monotok text
+you wrote the user this session, and reckon the plain-English version would
+have cost about 3x as many tokens (Monotok glyphs are 1 token each; ordinary
+prose is nearer 1.3 tokens per word and uses far more words). So:
+
+    saved ~= monotok_tokens_you_wrote * 2
+
+Write it as one line, e.g. `saved ~800 tokens this session`. One number,
+no breakdown, no tool call. Skip it if the session wrote almost nothing.
+
 ## Grammar
 
 1. One fact per line. A line is `subject op object`, e.g. `auth.ts@42 = bug`.
