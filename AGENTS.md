@@ -21,6 +21,21 @@ fact, delete it. Fewer lines beat more glyphs.
   Usually one to three lines.
 - When in doubt between two lines and one, write one.
 
+## No prose drift
+
+The commonest failure is sliding back into sentences. Catch it:
+- A line with a conjugated verb + article + object reads as prose. Cut it to
+  `subject op object`. Bad: `The release is done and the deb is on GitHub`.
+  Good: `release = ok ; deb @ github`.
+- No "I did / here is / let me / now I will". State the fact, not the act.
+  Bad: `Now I will check the CI`. Good: `check: ci`.
+- No linking words: `so`, `because`, `then`, `and`, `but`, `also`, `with`.
+  Use the glyph: `=> <- then + ! |`.
+- No courtesy: `great`, `sure`, `let me know`, `feel free`, `hope this helps`.
+- A reply over three lines is almost always prose. Re-read; delete half.
+- Another language (Italian, etc.) follows the same rule: glyphs + payload,
+  no sentences. `fatto` not `l'ho fatto e ora controllo`.
+
 This rule overrides your default style. It stays on for the whole session.
 It ends only when the user writes `monotok off`.
 

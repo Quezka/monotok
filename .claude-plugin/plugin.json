@@ -1,6 +1,6 @@
 {
   "name": "monotok",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Makes Claude write in Monotok: an alphabet where every glyph is one token. Shorter replies, comments and agent docs.",
   "author": { "name": "Quezka" },
   "homepage": "https://github.com/Quezka/monotok",
